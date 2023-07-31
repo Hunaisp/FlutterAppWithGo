@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'Bloc/CreateCourse/create_course_bloc.dart';
 import 'Bloc/GetAllCourses/get_all_courses_bloc.dart';
 import 'Ui/home.dart';
+
+String basePath = 'http://192.168.1.8:8080';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +17,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GetAllCoursesBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => GetAllCoursesBloc(),
+        ),
+        BlocProvider(
+          create: (context) => CreateCourseBloc(),
+        ),
+      ],
       child: MaterialApp(debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(

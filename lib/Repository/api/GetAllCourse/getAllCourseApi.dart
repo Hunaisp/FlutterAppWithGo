@@ -13,7 +13,7 @@ class GetAllCoursesApi {
 
 
   Future<List<GetAllCourses>> getCourses() async {
-    String trendingpath ='http://192.168.43.67:8080/course';
+    String trendingpath ='/course';
     var body = {
 
     };

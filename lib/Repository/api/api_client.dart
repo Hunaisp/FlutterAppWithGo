@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:goserver_local_host/main.dart';
 import 'package:http/http.dart';
 
 import 'api_exception.dart';
@@ -9,7 +10,7 @@ class ApiClient {
     Map<String, String> headerParams = {};
     Response response;
 
-    String url = path;
+    String url = basePath+path;
     print(url);
 
     final nullableHeaderParams = (headerParams.isEmpty) ? null : headerParams;
@@ -18,7 +19,7 @@ class ApiClient {
       case "POST":
         response = await post(Uri.parse(url),
             headers: {
-              'content-Type': 'application/x-www-form-urlencoded',
+              'content-Type': 'application/json',
             },
             body: body);
 
